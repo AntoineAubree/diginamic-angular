@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": []
           },
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hello-word"
+    }
+  },
+  "defaultProject": "hello-word",
+  "cli": {
+    "analytics": "55886dd5-2380-4d99-b129-5ad14cf7e364"
+  }
 }

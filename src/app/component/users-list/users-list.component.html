@@ -1,0 +1,70 @@
+<main class="container">
+    <section class="mb-3 row">
+        <div class="col-md-4 col-lg-6">
+            <h1 class="h2 text-md-left text-center"><i class="fa fa-users"></i> ({{users.length}}) Users</h1>
+        </div>
+        <div class="col-md-8 col-lg-6">
+            <div class="row">
+                <div class="btn-group col-md-6 mb-md-0 mb-3">
+                    <button type="button" class="btn btn-info">All</button>
+                    <button type="button" class="btn btn-secondary">Active</button>
+                    <button type="button" class="btn btn-secondary">Inactive</button>
+                </div>
+                <div class="input-group col-md-6">
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Tape your keyword">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section >
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nat. ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Birth Date</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <th scope="row">{{user.id}}</th>
+                    <td class="font-weight-bold">{{user.natId}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.company}}</td>
+                    <td>{{user.address | slice:0:20}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.birthDate | date:'dd/MM/yyyy'}}</td>
+                    <td><img [src]="user.picture" /></td>
+                    <td>
+                        <span *ngIf="user.status" class="badge bg-success">
+                            Valide
+                        </span>
+                        <span *ngIf="!user.status" class="badge bg-danger">
+                            Invalide
+                        </span>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="basic example">
+                            <a type="button" class="btn btn-info">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a type="button" class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
