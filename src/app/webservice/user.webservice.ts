@@ -17,8 +17,8 @@ export class UserWebService {
         this.baseUrl = 'http://localhost:3000/users/';
     }
 
-    getUsersFromBack(page: number, limit: number): Observable<any> {
-        return this.http.get<User[]>(this.baseUrl +  `?_page=${page}&_limit=${limit}`, {observe: 'response'});
+    getUsersFromBack(page: number, limit: number, fiteredUsers: string): Observable<any> {
+        return this.http.get<User[]>(this.baseUrl + `?_page=${page}&_limit=${limit}&q=${fiteredUsers}`, { observe: 'response' });
     }
 
     create(user: User) {

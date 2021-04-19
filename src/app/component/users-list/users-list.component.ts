@@ -13,18 +13,19 @@ export class UsersListComponent implements OnInit {
   users: User[] = [];
   pagination: any;
   pages: number[];
+  fiteredUsers: string = "";
 
   constructor(
     private userWebService: UserWebService
   ) { }
 
   ngOnInit(): void {
-    this.pagination = { currentPage: 1, itemsPage: 6, totalPages: 0, totalItems: 0 };
+    this.pagination = { currentPage: 1, itemsPage: 10, totalPages: 0, totalItems: 0 };
     this.populatesUsers();
   }
 
-  populatesUsers() {
-    this.userWebService.getUsersFromBack(this.pagination.currentPage, this.pagination.itemsPage).subscribe(
+  populatesUsers(): void {
+    this.userWebService.getUsersFromBack(this.pagination.currentPage, this.pagination.itemsPage, this.fiteredUsers).subscribe(
       (response: any) => {
         this.pagination.totalItems = response.headers.get('X-Total-Count');
         this.pagination.totalPages = this.getTotalPage(this.pagination.totalItems);
@@ -38,12 +39,15 @@ export class UsersListComponent implements OnInit {
     return Math.ceil(totalItems / this.pagination.itemsPage);
   }
 
-  paginate(page: number) {
-    this.userWebService.getUsersFromBack(page, this.pagination.itemsPage).subscribe(
-      (response: any) => {
-        this.users = response.body;
-      }
-    );
+  paginate(page: number): void {
+    this.pagination.currentPage = page;
+    this.populatesUsers();
+  }
+
+  filter(event: any): void {
+    this.fiteredUsers = event.target.value;
+    this.pagination.currentPage = 1;
+    this.populatesUsers();
   }
 
 }

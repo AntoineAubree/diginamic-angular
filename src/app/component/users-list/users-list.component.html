@@ -12,7 +12,7 @@
                 </div>
                 <div class="input-group col-md-6">
                     <span class="input-group-text"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Tape your keyword">
+                    <input type="text" class="form-control" placeholder="Tape your keyword" (input)="filter($event)">
                 </div>
             </div>
         </div>
@@ -67,9 +67,10 @@
             </tbody>
         </table>
     </section>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item" (click)="paginate(page)" *ngFor="let page of pages">
+    <nav aria-label="Page navigation">
+        <ul class="pagination d-flex justify-content-center">
+            <li class="page-item" [ngClass]="{'active': page == pagination.currentPage}" (click)="paginate(page)"
+                *ngFor="let page of pages">
                 <a class="page-link" href="#">{{page}}</a>
             </li>
         </ul>
