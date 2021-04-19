@@ -23,6 +23,7 @@
     "font-awesome": "^4.7.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "underscore": "^1.13.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

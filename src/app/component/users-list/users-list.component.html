@@ -17,7 +17,7 @@
             </div>
         </div>
     </section>
-    <section >
+    <section>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -67,4 +67,11 @@
             </tbody>
         </table>
     </section>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" (click)="paginate()" *ngFor="let page of pages">
+                <a class="page-link" href="#">{{page}}</a>
+            </li>
+        </ul>
+    </nav>
 </main>

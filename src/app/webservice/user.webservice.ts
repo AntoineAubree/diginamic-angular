@@ -10,15 +10,15 @@ import { Observable } from 'rxjs';
 export class UserWebService {
 
     private baseUrl: string;
-    
+
     constructor(
         private http: HttpClient
     ) {
         this.baseUrl = 'http://localhost:3000/users/';
     }
 
-    getUsersFromBack(): Observable<User[]> {
-        return this.http.get<User[]>(this.baseUrl);
+    getUsersFromBack(page: number, limit: number): Observable<any> {
+        return this.http.get<User[]>(this.baseUrl +  `?_page=${page}&_limit=${limit}`, {observe: 'response'});
     }
 
     create(user: User) {
